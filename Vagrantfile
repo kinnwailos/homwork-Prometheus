@@ -16,6 +16,8 @@ Vagrant.configure("2") do |config|
     server.vm.network "private_network", ip: "192.168.56.10"
     server.vm.network "forwarded_port", guest: 22, host: 22220, id: "ssh", auto_correct: true
     server.vm.network "forwarded_port", guest: 9090, host: 19090, auto_correct: true
+    server.vm.network "forwarded_port", guest: 9093, host: 19093, auto_correct: true
+    server.vm.network "forwarded_port", guest: 8080, host: 18080, auto_correct: true
     server.vm.network "forwarded_port", guest: 3000, host: 13000, auto_correct: true
     
     server.vm.provider "virtualbox" do |vb|

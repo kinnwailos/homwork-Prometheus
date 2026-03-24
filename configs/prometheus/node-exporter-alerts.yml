@@ -1,0 +1,11 @@
+groups:
+  - name: node-exporter-alerts
+    rules:
+      - alert: NodeExporterDown
+        expr: up{job=~"server|agent1|agent2"} == 0
+        for: 30s
+        labels:
+          severity: warning
+        annotations:
+          summary: "Node Exporter недоступен на {{ $labels.instance }}"
+          description: "Prometheus не может получить метрики от {{ $labels.instance }} (job={{ $labels.job }}) более 30 секунд."
